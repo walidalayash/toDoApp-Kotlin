@@ -15,11 +15,9 @@ import com.example.todoapp.screens.Settings
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : ComponentActivity() {
-    lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?,) {
         super.onCreate(savedInstanceState)
-//        val todoViewModel = ViewModelProvider(this)[TodoViewModel::class.java]
 
 
         setContent {

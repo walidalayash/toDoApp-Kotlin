@@ -61,7 +61,6 @@ import kotlinx.coroutines.launch
 @Composable
 
 fun Home(nav:NavController) {
-//    val todoList by viewModel.todoList.observeAsState()
 
     val todoList = remember {
 
