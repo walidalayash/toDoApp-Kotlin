@@ -1,5 +1,6 @@
-package com.example.todoapp.ui.theme.screens
+package com.example.todoapp.screens
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -25,8 +26,13 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.todoapp.MainActivity
 import com.example.todoapp.R
-import com.example.todoapp.ui.theme.constant.Route
+import com.example.todoapp.constant.Route
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+import java.lang.Exception
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -38,11 +44,13 @@ fun LoginScreen(nav:NavController) {
     var password by remember {
         mutableStateOf("")
     }
+    lateinit var auth: FirebaseAuth
+
 
     Column (
        modifier = Modifier
            .fillMaxSize()
-           .background(Color.White) ,
+           .background(Color.White),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     )
@@ -69,7 +77,8 @@ fun LoginScreen(nav:NavController) {
 
 
         Button(onClick = {
-           nav.navigate(Route.Home)
+
+            nav.navigate(Route.Home)
 
         }) {
             Text(text = "Login")

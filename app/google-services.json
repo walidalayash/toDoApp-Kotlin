@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "166268384715",
+    "project_id": "todoapp2jetpack",
+    "storage_bucket": "todoapp2jetpack.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:166268384715:android:abf3b0aeced6ff4c9e724e",
+        "android_client_info": {
+          "package_name": "com.example.todoapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAURXjCIj80U-nqdyp5g1RdQvHT6Fqunc8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

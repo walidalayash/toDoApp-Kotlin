@@ -13,11 +13,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.graphics.Color
-import com.example.todoapp.ui.theme.model.Todo
+import com.example.todoapp.model.Todo
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyAlertDialog(shouldShowDialog: MutableState<Boolean>, todoList: SnapshotStateList<Todo>) {
+fun MyAlertDialog(shouldShowDialog: MutableState<Boolean>, todoList:
+SnapshotStateList<Todo>) {
     var newToDo by remember {
         mutableStateOf("")
     }
@@ -35,9 +36,10 @@ fun MyAlertDialog(shouldShowDialog: MutableState<Boolean>, todoList: SnapshotSta
             confirmButton = {
                 Button(
                     onClick = {
-                        todoList.add(
-                            Todo(System.currentTimeMillis().toInt(),newToDo),
-                            )
+//                        todoList.add(
+//                            Todo(2,newToDo),
+//                            )
+                        todoList.add(Todo(2,newToDo))
                         shouldShowDialog.value = false
 
                     }

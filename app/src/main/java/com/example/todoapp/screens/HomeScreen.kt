@@ -1,4 +1,4 @@
-package com.example.todoapp.ui.theme.screens
+package com.example.todoapp.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -21,41 +21,36 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.todoapp.ui.theme.model.Todo
+import com.example.todoapp.model.Todo
 
 @Composable
-fun HomeScreen(p: PaddingValues, todoList: SnapshotStateList<Todo>){
+fun HomeScreen(p: PaddingValues,todoList:
+SnapshotStateList<Todo>) {
 
     Column(
         modifier = Modifier.padding(p)
     ) {
 
+        todoList?.let {
             LazyColumn(
                 content = {
-                    itemsIndexed(todoList.reversed()) { index: Int, item: Todo ->
-                        TodoItem(p, item = item,
-                            onDelete = {
-                                todoList.removeAt(index)
-                            })
+                    itemsIndexed(it) { index: Int, item: Todo ->
+                        TodoItem(p,item = item, onDelete = {
+                            todoList.removeAt(index)
+                        })
                     }
                 }
             )
-        } ?: Text(
-            modifier = Modifier.fillMaxWidth(),
-            textAlign = TextAlign.Center,
-            text = "No items yet",
-            fontSize = 16.sp
-        )
+        }
     }
 
 
-
+}
 
 @Composable
-fun TodoItem(p: PaddingValues,item : Todo,onDelete : ()-> Unit){
+fun TodoItem(p: PaddingValues, item : Todo, onDelete : ()-> Unit){
     Row(
         modifier = Modifier
             .fillMaxWidth()

@@ -1,4 +1,4 @@
-package com.example.todoapp.ui.theme.model
+package com.example.todoapp.model
 
 import androidx.compose.ui.graphics.vector.ImageVector
 

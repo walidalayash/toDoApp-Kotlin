@@ -35,6 +35,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -45,22 +46,28 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
-import com.example.todoapp.ui.theme.model.BottomNavigtion
-import com.example.todoapp.ui.theme.model.NavigationItem
-import com.example.todoapp.ui.theme.model.Todo
-import com.example.todoapp.ui.theme.screens.HomeScreen
-import com.example.todoapp.ui.theme.screens.Profile
+import androidx.lifecycle.ViewModel
+import androidx.navigation.NavController
+import com.example.todoapp.constant.Route
+import com.example.todoapp.model.BottomNavigtion
+import com.example.todoapp.model.NavigationItem
+import com.example.todoapp.model.Todo
+import com.example.todoapp.screens.HomeScreen
+import com.example.todoapp.screens.Profile
 import kotlinx.coroutines.launch
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Home() {
+
+fun Home(nav:NavController) {
+//    val todoList by viewModel.todoList.observeAsState()
+
     val todoList = remember {
 
         mutableStateListOf<Todo>(
-//            Todo(1, "Prepare presentation for meeting",),
-//            Todo(2, "Finish report on project progress",),
+            Todo(1, "Prepare presentation for meeting",),
+            Todo(2, "Finish report on project progress",),
 //            Todo(3, "Schedule follow-up call with client",),
 //            Todo(4, "Review and update project timeline",),
 //            Todo(5, "Prepare agenda for team meeting",),
@@ -92,7 +99,6 @@ fun Home() {
         MyAlertDialog(shouldShowDialog = shouldShowDialog, todoList)
     }
 
-
     val itemsNavigation = listOf(
         NavigationItem(
             title = "All",
@@ -111,6 +117,16 @@ fun Home() {
             unselectedIcon = Icons.Outlined.Settings,
         ),
     )
+
+
+
+
+
+
+
+
+
+
 
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -135,6 +151,10 @@ fun Home() {
                                 selectedNavigationItemIndex = index
                                 scope.launch {
                                     drawerState.close()
+                                }
+                                if(selectedNavigationItemIndex == 2){
+
+                                    nav.navigate("info")
                                 }
                             },
                             icon = {
@@ -166,6 +186,7 @@ fun Home() {
                                 scope.launch {
                                     drawerState.open()
                                 }
+
                             }) {
                                 Icon(
                                     imageVector = Icons.Default.Menu,
@@ -207,6 +228,7 @@ fun Home() {
                 if (selectItemIndex == 1) {
                     Profile(p)
                 }
+
             }
 
 
